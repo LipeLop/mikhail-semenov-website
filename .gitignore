@@ -1,0 +1,35 @@
+# Системные файлы
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Временные файлы
+*.tmp
+*.temp
+*.log
+
+# Кэш
+hts-cache/
+*.cache
+
+# Логи
+hts-log.txt
+doit.log
+
+# Временные файлы загрузки
+*.zip
+*.tar.gz
+
+# IDE файлы
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# Node modules (если понадобится)
+node_modules/
+npm-debug.log*
+
+# Backup файлы
+*.bak
+*.backup 
