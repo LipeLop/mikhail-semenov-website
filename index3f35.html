@@ -145,6 +145,13 @@
             align-items: center;
             gap: 0.3rem;
             font-size: 1rem;
+            position: relative;
+            overflow: visible;
+            transition: box-shadow 0.7s cubic-bezier(.4,0,.2,1);
+        }
+        .footer-contacts.footer-highlight {
+            box-shadow: 0 0 32px 8px #ffe066, 0 0 0 2px #ffe066;
+            transition: box-shadow 1.2s cubic-bezier(.4,0,.2,1);
         }
         .footer-contacts a {
             color: #fff;
@@ -154,6 +161,38 @@
         }
         .footer-contacts a:hover {
             text-decoration: underline;
+        }
+        .footer-svg-border rect {
+            transition: stroke-dashoffset 1.5s cubic-bezier(.4,0,.2,1);
+        }
+        .footer-contacts:not(.footer-highlight) .footer-svg-border rect {
+            stroke-dashoffset: 1040;
+        }
+        .footer-contacts.footer-highlight .footer-svg-border rect {
+            stroke-dashoffset: 0;
+        }
+        .project-card.hidden {
+            opacity: 0;
+            transform: translateY(40px) scale(0.97);
+            transition: opacity 0.7s cubic-bezier(.4,0,.2,1), transform 0.7s cubic-bezier(.4,0,.2,1);
+        }
+        .project-card.show {
+            opacity: 1;
+            transform: none;
+        }
+        .footer-contacts-inner {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            transition: box-shadow 0.7s cubic-bezier(.4,0,.2,1);
+            padding: 10px 20px;
+            border-radius: 16px;
+            background: none;
+        }
+        .footer-contacts-inner.footer-highlight {
+            box-shadow: 0 0 32px 8px #ffe066, 0 0 0 2px #ffe066;
+            transition: box-shadow 1.2s cubic-bezier(.4,0,.2,1);
+            border-radius: 16px;
         }
         @media (max-width: 900px) {
             .projects-list {
@@ -166,18 +205,25 @@
         }
         @media (max-width: 600px) {
             .header-inner, main {
-                padding: 0 0.5rem;
+                padding: 0 0.2rem;
             }
             .projects-list {
                 flex-direction: column;
-                gap: 1rem;
+                gap: 0.7rem;
             }
             .project-card {
                 width: 100%;
-                padding: 1rem 0.5rem;
+                padding: 0.7rem 0.2rem;
+                font-size: 0.97rem;
             }
             .project-img {
-                height: 140px;
+                height: 110px;
+            }
+            h1 {
+                font-size: 1.2rem;
+            }
+            .footer-contacts {
+                font-size: 0.97rem;
             }
         }
     </style>
@@ -186,13 +232,13 @@
     <header>
         <div class="header-inner">
             <div class="logo">
-                <img src="wp-content/themes/MS-theme/assets/img/logo.jpg" alt="NPP-TEK logo" style="height:48px;border-radius:8px;">
-                <span style="font-family:'Russo One',sans-serif;font-size:1.3rem;">Михаил Семёнов</span>
+                <img src="wp-content/themes/MS-theme/assets/img/logo.jpg" alt="NPP-TEK logo" style="height:48px;border-radius:8px;max-width:100%;">
+                <a href="index.html" class="main-link" style="font-family:'Russo One',sans-serif;font-size:1.3rem;color:inherit;text-decoration:none;">Михаил Семёнов</a>
             </div>
             <nav>
                 <a href="indexcdf1.html?page_id=10">Статьи</a>
                 <a href="index3f35.html?page_id=8" class="active">Проекты</a>
-                <a href="index.html#contacts">Контакты</a>
+                <a href="#footer-contacts" id="contacts-link">Контакты</a>
             </nav>
         </div>
     </header>
@@ -225,15 +271,44 @@
             </div>
         </div>
     </main>
-    <footer>
+    <footer id="footer-contacts">
         <div class="footer-contacts">
-            <span>Почта: <a href="mailto:semyonovmn@gmail.com">semyonovmn@gmail.com</a></span>
-            <span>Телефон: <a href="tel:+73822999784">+7 (3822) 99-97-84</a></span>
-            <span>Telegram: <a href="https://t.me/SemyonovMN" target="_blank">@SemyonovMN</a></span>
-            <span>Твиттер: <a href="https://twitter.com/semenovmn" target="_blank">@semenovmn</a></span>
-            <span>Компания: ООО НПП "ТЭК" — <a href="https://npptec.ru" target="_blank">npptec.ru</a></span>
-            <span>Адрес: 634040, Россия, г. Томск, ул. Высоцкого, д. 33</span>
+            <div class="footer-contacts-inner">
+                <span>Почта: <a href="mailto:semyonovmn@gmail.com">semyonovmn@gmail.com</a></span>
+                <span>Телефон: <a href="tel:+73822999784">+7 (3822) 99-97-84</a></span>
+                <span>Telegram: <a href="https://t.me/SemyonovMN" target="_blank">@SemyonovMN</a></span>
+                <span>Твиттер: <a href="https://twitter.com/semenovmn" target="_blank">@semenovmn</a></span>
+                <span>Компания: ООО НПП "ТЭК" — <a href="https://npptec.ru" target="_blank">npptec.ru</a></span>
+                <span>Адрес: 634040, Россия, г. Томск, ул. Высоцкого, д. 33</span>
+            </div>
         </div>
     </footer>
+    <script>
+        // Плавный скролл к футеру
+        const contactsLink = document.getElementById('contacts-link');
+        if (contactsLink) {
+            contactsLink.addEventListener('click', function(e) {
+                e.preventDefault();
+                const footer = document.getElementById('footer-contacts');
+                const contactsBlock = footer.querySelector('.footer-contacts-inner');
+                footer.scrollIntoView({ behavior: 'smooth' });
+                contactsBlock.classList.add('footer-highlight');
+                setTimeout(() => contactsBlock.classList.remove('footer-highlight'), 1600);
+            });
+        }
+        // Анимация появления карточек при прокрутке
+        const cards = document.querySelectorAll('.project-card');
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('show');
+                }
+            });
+        }, { threshold: 0.15 });
+        cards.forEach(card => {
+            card.classList.add('hidden');
+            observer.observe(card);
+        });
+    </script>
 </body>
 </html>

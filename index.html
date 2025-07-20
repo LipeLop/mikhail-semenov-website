@@ -18,6 +18,10 @@
             --radius: 18px;
             --shadow: 0 2px 16px rgba(44,62,80,0.08);
         }
+        html, body {
+            overflow-x: hidden;
+            max-width: 100vw;
+        }
         * { box-sizing: border-box; }
         body {
             margin: 0;
@@ -44,6 +48,7 @@
             align-items: center;
             justify-content: space-between;
             padding: 0 1.5rem;
+            width: 100%;
         }
         .logo {
             display: flex;
@@ -53,10 +58,12 @@
         .logo img {
             height: 48px;
             border-radius: 8px;
+            max-width: 100%;
         }
         nav {
             display: flex;
             gap: 1.2rem;
+            flex-wrap: wrap;
         }
         nav a {
             color: var(--accent2);
@@ -79,6 +86,7 @@
             border-radius: var(--radius);
             box-shadow: var(--shadow);
             padding: 2.5rem 2rem 2rem 2rem;
+            width: 100%;
         }
         h1, h2, h3 {
             font-family: 'Russo One', 'Jura', Arial, sans-serif;
@@ -91,15 +99,18 @@
             gap: 2rem;
             align-items: center;
             margin-bottom: 2.5rem;
+            width: 100%;
         }
         .profile-img {
             flex: 0 0 180px;
             max-width: 180px;
             border-radius: 16px;
             box-shadow: 0 2px 12px rgba(44,62,80,0.07);
+            width: 100%;
         }
         .profile-info {
             flex: 1 1 300px;
+            min-width: 0;
         }
         .profile-quote {
             font-style: italic;
@@ -111,6 +122,7 @@
             flex-wrap: wrap;
             gap: 1.5rem;
             margin-bottom: 2.5rem;
+            width: 100%;
         }
         .about-block {
             flex: 1 1 220px;
@@ -120,9 +132,11 @@
             color: var(--accent2);
             font-size: 1.05rem;
             box-shadow: 0 1px 6px rgba(44,62,80,0.06);
+            min-width: 0;
         }
         .certificates {
             margin-bottom: 2.5rem;
+            width: 100%;
         }
         .cert-swiper {
             width: 100%;
@@ -170,14 +184,17 @@
             gap: 2rem;
             align-items: center;
             margin-bottom: 2.5rem;
+            width: 100%;
         }
         .workplace-img {
             flex: 0 0 220px;
             max-width: 220px;
             border-radius: 16px;
+            width: 100%;
         }
         .workplace-info {
             flex: 1 1 300px;
+            min-width: 0;
         }
         .workplace-info a {
             display: inline-block;
@@ -210,6 +227,8 @@
             align-items: center;
             gap: 0.3rem;
             font-size: 1rem;
+            position: relative;
+            overflow: visible;
         }
         .footer-contacts a {
             color: #fff;
@@ -268,6 +287,30 @@
             .cert-card img { max-height: 100px; min-height: 60px; }
             .swiper-button-next, .swiper-button-prev { top: 18% !important; }
         }
+        .hidden {
+            opacity: 0;
+            transform: translateY(40px) scale(0.97);
+            transition: opacity 0.7s cubic-bezier(.4,0,.2,1), transform 0.7s cubic-bezier(.4,0,.2,1);
+        }
+        .show {
+            opacity: 1;
+            transform: none;
+        }
+        .main-link:hover { text-decoration: underline; color: var(--blue); }
+        .footer-contacts-inner {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            transition: box-shadow 0.7s cubic-bezier(.4,0,.2,1);
+            padding: 10px 20px;
+            border-radius: 16px;
+            background: none;
+        }
+        .footer-contacts-inner.footer-highlight {
+            box-shadow: 0 0 32px 8px #ffe066, 0 0 0 2px #ffe066;
+            transition: box-shadow 1.2s cubic-bezier(.4,0,.2,1);
+            border-radius: 16px;
+        }
     </style>
 </head>
 <body>
@@ -275,12 +318,12 @@
         <div class="header-inner">
             <div class="logo">
                 <img src="wp-content/themes/MS-theme/assets/img/logo.jpg" alt="NPP-TEK logo" style="height:48px;border-radius:8px;">
-                <span style="font-family:'Russo One',sans-serif;font-size:1.3rem;">Михаил Семёнов</span>
+                <a href="index.html" class="main-link" style="font-family:'Russo One',sans-serif;font-size:1.3rem;color:inherit;text-decoration:none;">Михаил Семёнов</a>
             </div>
             <nav>
                 <a href="indexcdf1.html?page_id=10">Статьи</a>
                 <a href="index3f35.html?page_id=8">Проекты</a>
-                <a href="index.html#contacts">Контакты</a>
+                <a href="#footer-contacts" id="contacts-link">Контакты</a>
             </nav>
         </div>
     </header>
@@ -372,35 +415,64 @@
             </div>
         </section>
     </main>
-    <footer>
+    <footer id="footer-contacts">
         <div class="footer-contacts">
-            <span>Почта: <a href="mailto:semyonovmn@gmail.com">semyonovmn@gmail.com</a></span>
-            <span>Телефон: <a href="tel:+73822999784">+7 (3822) 99-97-84</a></span>
-            <span>Telegram: <a href="https://t.me/SemyonovMN" target="_blank">@SemyonovMN</a></span>
-            <span>Твиттер: <a href="https://twitter.com/semenovmn" target="_blank">@semenovmn</a></span>
-            <span>Компания: ООО НПП "ТЭК" — <a href="https://npptec.ru" target="_blank">npptec.ru</a></span>
-            <span>Адрес: 634040, Россия, г. Томск, ул. Высоцкого, д. 33</span>
+            <div class="footer-contacts-inner">
+                <span>Почта: <a href="mailto:semyonovmn@gmail.com">semyonovmn@gmail.com</a></span>
+                <span>Телефон: <a href="tel:+73822999784">+7 (3822) 99-97-84</a></span>
+                <span>Telegram: <a href="https://t.me/SemyonovMN" target="_blank">@SemyonovMN</a></span>
+                <span>Твиттер: <a href="https://twitter.com/semenovmn" target="_blank">@semenovmn</a></span>
+                <span>Компания: ООО НПП "ТЭК" — <a href="https://npptec.ru" target="_blank">npptec.ru</a></span>
+                <span>Адрес: 634040, Россия, г. Томск, ул. Высоцкого, д. 33</span>
+            </div>
         </div>
     </footer>
     <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
     <script>
-      const swiper = new Swiper('.cert-swiper', {
-        slidesPerView: 3,
-        spaceBetween: 30,
-        loop: true,
-        navigation: {
-          nextEl: '.swiper-button-next',
-          prevEl: '.swiper-button-prev',
-        },
-        pagination: {
-          el: '.swiper-pagination',
-          clickable: true,
-        },
-        breakpoints: {
+const swiper = new Swiper('.cert-swiper', {
+    slidesPerView: 3,
+    spaceBetween: 30,
+    loop: true,
+    navigation: {
+        nextEl: '.swiper-button-next',
+        prevEl: '.swiper-button-prev',
+    },
+    pagination: {
+        el: '.swiper-pagination',
+        clickable: true,
+    },
+            breakpoints: {
           1200: { slidesPerView: 3 },
           900: { slidesPerView: 2 },
           0: { slidesPerView: 1 }
         }
+});
+    </script>
+    <script>
+      // Плавный скролл к футеру + подсветка
+      const contactsLink = document.getElementById('contacts-link');
+      if (contactsLink) {
+        contactsLink.addEventListener('click', function(e) {
+          e.preventDefault();
+          const footer = document.getElementById('footer-contacts');
+          const contactsBlock = footer.querySelector('.footer-contacts-inner');
+          footer.scrollIntoView({ behavior: 'smooth' });
+          contactsBlock.classList.add('footer-highlight');
+          setTimeout(() => contactsBlock.classList.remove('footer-highlight'), 1600);
+        });
+      }
+      // Анимация появления секций
+      const fadeSections = document.querySelectorAll('.profile, .about-blocks, .certificates, .workplace');
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('show');
+          }
+        });
+      }, { threshold: 0.15 });
+      fadeSections.forEach(sec => {
+        sec.classList.add('hidden');
+        observer.observe(sec);
       });
     </script>
 </body>
