@@ -18,10 +18,6 @@
             --radius: 18px;
             --shadow: 0 2px 16px rgba(44,62,80,0.08);
         }
-        html, body {
-            overflow-x: hidden;
-            max-width: 100vw;
-        }
         * { box-sizing: border-box; }
         body {
             margin: 0;
@@ -32,6 +28,7 @@
             min-height: 100vh;
             display: flex;
             flex-direction: column;
+            overflow-x: hidden;
         }
         header {
             background: var(--header-bg);
@@ -48,7 +45,6 @@
             align-items: center;
             justify-content: space-between;
             padding: 0 1.5rem;
-            width: 100%;
         }
         .logo {
             display: flex;
@@ -58,12 +54,10 @@
         .logo img {
             height: 48px;
             border-radius: 8px;
-            max-width: 100%;
         }
         nav {
             display: flex;
             gap: 1.2rem;
-            flex-wrap: wrap;
         }
         nav a {
             color: var(--accent2);
@@ -86,7 +80,6 @@
             border-radius: var(--radius);
             box-shadow: var(--shadow);
             padding: 2.5rem 2rem 2rem 2rem;
-            width: 100%;
         }
         h1, h2, h3 {
             font-family: 'Russo One', 'Jura', Arial, sans-serif;
@@ -141,6 +134,7 @@
         .cert-swiper {
             width: 100%;
             padding-bottom: 2.5rem;
+            position: relative;
         }
         .swiper-slide {
             display: flex;
@@ -254,6 +248,7 @@
             box-shadow: 0 2px 8px rgba(44,62,80,0.10);
             transition: background 0.2s;
             z-index: 2;
+            position: absolute;
         }
         .swiper-button-next:hover, .swiper-button-prev:hover {
             background: #233C95;
@@ -262,30 +257,73 @@
             font-size: 1.7rem;
         }
         .swiper-button-prev {
-            left: 0;
+            left: 8px !important;
+            right: auto !important;
+            /* top задаётся через JS */
+            transform: translateY(-50%);
         }
         .swiper-button-next {
-            right: 0;
+            right: 8px !important;
+            left: auto !important;
+            /* top задаётся через JS */
+            transform: translateY(-50%);
         }
         @media (max-width: 900px) {
-            main { padding: 1.2rem 0.5rem; }
-            .header-inner { flex-direction: column; gap: 0.7rem; }
-            .profile, .workplace { flex-direction: column; align-items: flex-start; }
-            .about-blocks, .cert-list { flex-direction: column; }
-            .cert-list {
-                grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+            main, .header-inner, .cert-swiper, .cert-card {
+                max-width: 100vw !important;
+                width: 100vw !important;
+                box-sizing: border-box;
             }
-            .cert-card { min-height: 220px; max-width: 95vw; padding: 1rem 0.5rem; }
-            .cert-card img { max-height: 160px; min-height: 100px; }
-            .swiper-button-next, .swiper-button-prev { top: 25% !important; }
+            main { padding: 1.2rem 0.2rem; }
+            .header-inner { flex-direction: column; gap: 0.7rem; padding: 0 0.2rem; }
+            .profile, .workplace, .about-blocks, .certificates { flex-direction: column !important; align-items: stretch !important; }
+            .profile-img, .workplace-img { max-width: 100%; width: 100%; }
+            .cert-card { min-height: 180px; padding: 1rem 0.5rem; }
+            .cert-card img { max-height: 120px; min-height: 60px; }
+            .swiper-button-next {
+                width: 36px;
+                height: 36px;
+                right: 4px !important;
+                left: auto !important;
+                transform: translateY(-50%);
+                margin: 0;
+            }
+            .swiper-button-prev {
+                width: 36px;
+                height: 36px;
+                left: 4px !important;
+                right: auto !important;
+                transform: translateY(-50%);
+                margin: 0;
+            }
         }
         @media (max-width: 600px) {
-            .cert-list {
-                grid-template-columns: 1fr;
+            main, .header-inner, .cert-swiper, .cert-card {
+                max-width: 100vw !important;
+                width: 100vw !important;
+                box-sizing: border-box;
             }
-            .cert-card { min-height: 160px; padding: 0.7rem; }
-            .cert-card img { max-height: 100px; min-height: 60px; }
-            .swiper-button-next, .swiper-button-prev { top: 18% !important; }
+            main { padding: 0.5rem 0.05rem; }
+            .header-inner { padding: 0 0.05rem; }
+            .profile, .workplace, .about-blocks, .certificates { flex-direction: column !important; align-items: stretch !important; }
+            .cert-card { min-height: 120px; padding: 0.5rem 0.1rem; }
+            .cert-card img { max-height: 80px; min-height: 40px; }
+            .swiper-button-next {
+                width: 32px;
+                height: 32px;
+                right: 2px !important;
+                left: auto !important;
+                transform: translateY(-50%);
+                margin: 0;
+            }
+            .swiper-button-prev {
+                width: 32px;
+                height: 32px;
+                left: 2px !important;
+                right: auto !important;
+                transform: translateY(-50%);
+                margin: 0;
+            }
         }
         .hidden {
             opacity: 0;
@@ -317,7 +355,7 @@
     <header>
         <div class="header-inner">
             <div class="logo">
-                <img src="wp-content/themes/MS-theme/assets/img/logo.jpg" alt="NPP-TEK logo" style="height:48px;border-radius:8px;">
+                <img src="wp-content/themes/MS-theme/assets/img/logo.jpg" alt="NPP-TEK logo" style="height:48px;border-radius:8px;max-width:100%;">
                 <a href="index.html" class="main-link" style="font-family:'Russo One',sans-serif;font-size:1.3rem;color:inherit;text-decoration:none;">Михаил Семёнов</a>
             </div>
             <nav>
@@ -447,6 +485,24 @@ const swiper = new Swiper('.cert-swiper', {
           0: { slidesPerView: 1 }
         }
 });
+
+// Центрируем стрелки по центру карточки
+function centerSwiperArrows() {
+    const swiperEl = document.querySelector('.cert-swiper');
+    const card = swiperEl.querySelector('.swiper-slide-active .cert-card') || swiperEl.querySelector('.cert-card');
+    const prev = swiperEl.querySelector('.swiper-button-prev');
+    const next = swiperEl.querySelector('.swiper-button-next');
+    if (card && prev && next) {
+        const cardRect = card.getBoundingClientRect();
+        const swiperRect = swiperEl.getBoundingClientRect();
+        const center = cardRect.top + cardRect.height / 2 - swiperRect.top;
+        prev.style.top = center + 'px';
+        next.style.top = center + 'px';
+    }
+}
+centerSwiperArrows();
+window.addEventListener('resize', centerSwiperArrows);
+swiper.on('slideChangeTransitionEnd', centerSwiperArrows);
     </script>
     <script>
       // Плавный скролл к футеру + подсветка

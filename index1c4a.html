@@ -20,8 +20,9 @@
         * { box-sizing: border-box; }
         body {
             margin: 0;
-            background: var(--main-bg);
+            padding: 0;
             font-family: 'Jura', Arial, sans-serif;
+            background: var(--main-bg);
             color: var(--accent);
             min-height: 100vh;
             display: flex;
@@ -30,12 +31,13 @@
         header {
             background: var(--header-bg);
             box-shadow: var(--shadow);
-            border-radius: 0 0 var(--radius) var(--radius);
-            padding: 0.5rem 0;
-            margin-bottom: 2rem;
+            padding: 0.5rem 0 0.5rem 0;
+            position: sticky;
+            top: 0;
+            z-index: 10;
         }
         .header-inner {
-            max-width: 1100px;
+            max-width: 1200px;
             margin: 0 auto;
             display: flex;
             align-items: center;
@@ -45,31 +47,42 @@
         .logo {
             display: flex;
             align-items: center;
-            gap: 0.7rem;
+            gap: 1rem;
         }
         .logo img {
             height: 48px;
             border-radius: 8px;
         }
+        nav {
+            display: flex;
+            gap: 1.2rem;
+        }
         nav a {
             color: var(--accent2);
             text-decoration: none;
-            margin-left: 1.5rem;
-            font-weight: 700;
+            font-weight: 600;
             font-size: 1.1rem;
-            transition: color 0.2s;
+            padding: 0.4rem 1rem;
+            border-radius: 8px;
+            transition: background 0.18s, color 0.18s;
         }
-        nav a:hover {
+        nav a:hover, nav a.active {
+            background: var(--blue-light);
             color: var(--blue);
         }
         main {
-            flex: 1 0 auto;
-            max-width: 800px;
-            margin: 0 auto 2rem auto;
-            padding: 0 1.5rem;
+            flex: 1;
+            max-width: 1100px;
+            margin: 2.5rem auto 1.5rem auto;
             background: var(--white);
             border-radius: var(--radius);
             box-shadow: var(--shadow);
+            padding: 2.5rem 2rem 2rem 2rem;
+        }
+        h1, h2, h3 {
+            font-family: 'Russo One', 'Jura', Arial, sans-serif;
+            color: var(--blue);
+            margin-top: 0;
         }
         .article-meta {
             color: #888;
@@ -110,12 +123,8 @@
             border-radius: 10px;
         }
         @media (max-width: 900px) {
-            .header-inner, main {
-                padding: 0 0.5rem;
-            }
-            main {
-                max-width: 100%;
-            }
+            main { padding: 1.2rem 0.5rem; }
+            .header-inner { flex-direction: column; gap: 0.7rem; }
         }
         @media (max-width: 600px) {
             .header-inner, main {
@@ -183,69 +192,69 @@
     </style>
 </head>
 <body>
-<header>
-    <div class="header-inner">
-        <div class="logo">
-            <img src="wp-content/themes/MS-theme/assets/img/logo.jpg" alt="NPP-TEK logo" style="height:48px;border-radius:8px;max-width:100%;">
-            <a href="index.html" class="main-link" style="font-family:'Russo One',sans-serif;font-size:1.3rem;color:inherit;text-decoration:none;">Михаил Семёнов</a>
+    <header>
+        <div class="header-inner">
+            <div class="logo">
+                <img src="wp-content/themes/MS-theme/assets/img/logo.jpg" alt="NPP-TEK logo" style="height:48px;border-radius:8px;max-width:100%;">
+                <a href="index.html" class="main-link" style="font-family:'Russo One',sans-serif;font-size:1.3rem;color:inherit;text-decoration:none;">Михаил Семёнов</a>
+            </div>
+            <nav>
+                <a href="indexcdf1.html?page_id=10">Статьи</a>
+                <a href="index3f35.html?page_id=8">Проекты</a>
+                <a href="#footer-contacts" id="contacts-link">Контакты</a>
+            </nav>
         </div>
-        <nav>
-            <a href="indexcdf1.html?page_id=10">Статьи</a>
-            <a href="index3f35.html?page_id=8">Проекты</a>
-            <a href="#footer-contacts" id="contacts-link">Контакты</a>
-        </nav>
-    </div>
-</header>
-<main>
-    <article>
-        <h1 class="article-title">Softline и Microsoft заключили соглашение Enterprise Agreement с ООО НПП ТЭК</h1>
-        <div class="article-meta">30.07.2012</div>
-        <img class="article-img" src="wp-content/uploads/2024/07/topic2.png" alt="Softline и Microsoft">
-        <p>Представительство компании Softline в Томске объявляет о заключении соглашения Microsoft Enterprise Agreement (EA) на поставку программного обеспечения Microsoft с ООО «Научно-производственное предприятие «Томская электронная компания» (ООО НПП ТЭК).</p>
-        <p>ООО НПП ТЭК – разработчик и поставщик интеллектуального электротехнического оборудования, приборов контроля, регулирования и управления, программно-технических средств автоматизации. Основными объектами автоматизации и сферой применения создаваемых устройств являются предприятия металлургической, химической, нефтехимической, нефтеперерабатывающей промышленности и магистральные трубопроводы. Гибкое современное производство и интеллектуальный потенциал ООО НПП ТЭК позволяют компании предлагать своим клиентам эффективные решения и гарантировать быстрое и качественное выполнение заказа любой сложности.</p>
-        <p>В рамках заключенного c Softline соглашения ООО НПП ТЭК лицензировало базовые продукты Microsoft для всех используемых компьютеров, при этом оплата будет производиться в виде ежегодных платежей в течение трех лет, что позволит избежать крупных единовременных инвестиций в приобретение программного обеспечения. По условиям договора заказчику также предоставляется пакет дополнительных бесплатных услуг по программе Software Assurance. Одним из основных преимуществ данной программы является бесплатная возможность использования самых последних версий продуктов Microsoft по мере их появления. Это позволяет компании минимизировать необходимость отслеживать используемые версии программных продуктов, которая, как правило, приводит к увеличению административных расходов и незапланированных трат на приобретение новых версий. Лицензирование всего парка компьютеров с возможностью переноса программного обеспечения с одного ПК на другой значительно снижает риск использования нелицензионного ПО.</p>
-        <p>«Программа корпоративного лицензирования Enterprise Agreement включает в себя не только поставку лицензионного программного обеспечения, но еще и комплекс дополнительных услуг, предоставляемых поставщиком, таких как техническая поддержка 24×7, обучение сотрудников, планирование внедрения решений Microsoft и ряд других, – говорит Константин Матвеев, руководитель представительства компании Softline в г. Томск. – В рамках корпоративных программ Microsoft c компанией Softline на долгосрочной основе сотрудничают многие крупные компании-лидеры в своих отраслях, и мы рады, что ООО НПП ТЭК вошло в их число».</p>
-        <blockquote>«Мы считаем компанию Softline одним из самых компетентных поставщиков IT-услуг на рынке Томской области, и работа специалистов партнера в рамках данного соглашения – очередное тому подтверждение. Заключенный контракт полностью соответствует стратегическим интересам нашей компании как с точки зрения состава программных продуктов, так и с точки зрения условий работы», – отмечает Михаил Семёнов, заместитель начальника отдела информационных технологий ООО НПП ТЭК.</blockquote>
-    </article>
-</main>
-<footer id="footer-contacts">
-    <div class="footer-contacts">
-        <div class="footer-contacts-inner">
-            <span>Почта: <a href="mailto:semyonovmn@gmail.com">semyonovmn@gmail.com</a></span>
-            <span>Телефон: <a href="tel:+73822999784">+7 (3822) 99-97-84</a></span>
-            <span>Telegram: <a href="https://t.me/SemyonovMN" target="_blank">@SemyonovMN</a></span>
-            <span>Твиттер: <a href="https://twitter.com/semenovmn" target="_blank">@semenovmn</a></span>
-            <span>Компания: ООО НПП "ТЭК" — <a href="https://npptec.ru" target="_blank">npptec.ru</a></span>
-            <span>Адрес: 634040, Россия, г. Томск, ул. Высоцкого, д. 33</span>
+    </header>
+    <main>
+        <article>
+            <h1 class="article-title">Softline и Microsoft заключили соглашение Enterprise Agreement с ООО НПП ТЭК</h1>
+            <div class="article-meta">30.07.2012</div>
+            <img class="article-img" src="wp-content/uploads/2024/07/topic2.png" alt="Softline и Microsoft">
+            <p>Представительство компании Softline в Томске объявляет о заключении соглашения Microsoft Enterprise Agreement (EA) на поставку программного обеспечения Microsoft с ООО «Научно-производственное предприятие «Томская электронная компания» (ООО НПП ТЭК).</p>
+            <p>ООО НПП ТЭК – разработчик и поставщик интеллектуального электротехнического оборудования, приборов контроля, регулирования и управления, программно-технических средств автоматизации. Основными объектами автоматизации и сферой применения создаваемых устройств являются предприятия металлургической, химической, нефтехимической, нефтеперерабатывающей промышленности и магистральные трубопроводы. Гибкое современное производство и интеллектуальный потенциал ООО НПП ТЭК позволяют компании предлагать своим клиентам эффективные решения и гарантировать быстрое и качественное выполнение заказа любой сложности.</p>
+            <p>В рамках заключенного c Softline соглашения ООО НПП ТЭК лицензировало базовые продукты Microsoft для всех используемых компьютеров, при этом оплата будет производиться в виде ежегодных платежей в течение трех лет, что позволит избежать крупных единовременных инвестиций в приобретение программного обеспечения. По условиям договора заказчику также предоставляется пакет дополнительных бесплатных услуг по программе Software Assurance. Одним из основных преимуществ данной программы является бесплатная возможность использования самых последних версий продуктов Microsoft по мере их появления. Это позволяет компании минимизировать необходимость отслеживать используемые версии программных продуктов, которая, как правило, приводит к увеличению административных расходов и незапланированных трат на приобретение новых версий. Лицензирование всего парка компьютеров с возможностью переноса программного обеспечения с одного ПК на другой значительно снижает риск использования нелицензионного ПО.</p>
+            <p>«Программа корпоративного лицензирования Enterprise Agreement включает в себя не только поставку лицензионного программного обеспечения, но еще и комплекс дополнительных услуг, предоставляемых поставщиком, таких как техническая поддержка 24×7, обучение сотрудников, планирование внедрения решений Microsoft и ряд других, – говорит Константин Матвеев, руководитель представительства компании Softline в г. Томск. – В рамках корпоративных программ Microsoft c компанией Softline на долгосрочной основе сотрудничают многие крупные компании-лидеры в своих отраслях, и мы рады, что ООО НПП ТЭК вошло в их число».</p>
+            <blockquote>«Мы считаем компанию Softline одним из самых компетентных поставщиков IT-услуг на рынке Томской области, и работа специалистов партнера в рамках данного соглашения – очередное тому подтверждение. Заключенный контракт полностью соответствует стратегическим интересам нашей компании как с точки зрения состава программных продуктов, так и с точки зрения условий работы», – отмечает Михаил Семёнов, заместитель начальника отдела информационных технологий ООО НПП ТЭК.</blockquote>
+        </article>
+    </main>
+    <footer id="footer-contacts">
+        <div class="footer-contacts">
+            <div class="footer-contacts-inner">
+                <span>Почта: <a href="mailto:semyonovmn@gmail.com">semyonovmn@gmail.com</a></span>
+                <span>Телефон: <a href="tel:+73822999784">+7 (3822) 99-97-84</a></span>
+                <span>Telegram: <a href="https://t.me/SemyonovMN" target="_blank">@SemyonovMN</a></span>
+                <span>Твиттер: <a href="https://twitter.com/semenovmn" target="_blank">@semenovmn</a></span>
+                <span>Компания: ООО НПП "ТЭК" — <a href="https://npptec.ru" target="_blank">npptec.ru</a></span>
+                <span>Адрес: 634040, Россия, г. Томск, ул. Высоцкого, д. 33</span>
+            </div>
         </div>
-    </div>
-</footer>
-<script>
-// Плавный скролл к футеру
-const contactsLink = document.getElementById('contacts-link');
-if (contactsLink) {
-  contactsLink.addEventListener('click', function(e) {
-    e.preventDefault();
-    const footer = document.getElementById('footer-contacts');
-    const contactsBlock = footer.querySelector('.footer-contacts-inner');
-    footer.scrollIntoView({ behavior: 'smooth' });
-    contactsBlock.classList.add('footer-highlight');
-    setTimeout(() => contactsBlock.classList.remove('footer-highlight'), 1600);
-  });
-}
-// Анимация появления основного контента
-const mainContent = document.querySelector('main');
-if (mainContent) {
-  mainContent.classList.add('hidden');
-  const observer = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        entry.target.classList.add('show');
-      }
-    });
-  }, { threshold: 0.15 });
-  observer.observe(mainContent);
-}
-</script>
+    </footer>
+    <script>
+    // Плавный скролл к футеру
+    const contactsLink = document.getElementById('contacts-link');
+    if (contactsLink) {
+      contactsLink.addEventListener('click', function(e) {
+        e.preventDefault();
+        const footer = document.getElementById('footer-contacts');
+        const contactsBlock = footer.querySelector('.footer-contacts-inner');
+        footer.scrollIntoView({ behavior: 'smooth' });
+        contactsBlock.classList.add('footer-highlight');
+        setTimeout(() => contactsBlock.classList.remove('footer-highlight'), 1600);
+      });
+    }
+    // Анимация появления основного контента
+    const mainContent = document.querySelector('main');
+    if (mainContent) {
+      mainContent.classList.add('hidden');
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('show');
+          }
+        });
+      }, { threshold: 0.15 });
+      observer.observe(mainContent);
+    }
+    </script>
 </body>
 </html>

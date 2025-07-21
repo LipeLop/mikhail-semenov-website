@@ -32,12 +32,13 @@
         header {
             background: var(--header-bg);
             box-shadow: var(--shadow);
-            border-radius: 0 0 var(--radius) var(--radius);
-            padding: 0.5rem 0;
-            margin-bottom: 2rem;
+            padding: 0.5rem 0 0.5rem 0;
+            position: sticky;
+            top: 0;
+            z-index: 10;
         }
         .header-inner {
-            max-width: 1100px;
+            max-width: 1200px;
             margin: 0 auto;
             display: flex;
             align-items: center;
@@ -47,7 +48,7 @@
         .logo {
             display: flex;
             align-items: center;
-            gap: 0.7rem;
+            gap: 1rem;
         }
         .logo img {
             height: 48px;
@@ -71,13 +72,13 @@
             color: var(--blue);
         }
         main {
-            flex: 1 0 auto;
+            flex: 1;
             max-width: 1100px;
-            margin: 0 auto 2rem auto;
-            padding: 0 1.5rem;
+            margin: 2.5rem auto 1.5rem auto;
             background: var(--white);
             border-radius: var(--radius);
             box-shadow: var(--shadow);
+            padding: 2.5rem 2rem 2rem 2rem;
         }
         h1, h2, h3 {
             font-family: 'Russo One', 'Jura', Arial, sans-serif;
@@ -202,6 +203,8 @@
                 width: 100%;
                 min-width: 0;
             }
+            main { padding: 1.2rem 0.5rem; }
+            .header-inner { flex-direction: column; gap: 0.7rem; }
         }
         @media (max-width: 600px) {
             .header-inner, main {
@@ -237,7 +240,7 @@
             </div>
             <nav>
                 <a href="indexcdf1.html?page_id=10">Статьи</a>
-                <a href="index3f35.html?page_id=8" class="active">Проекты</a>
+                <a href="index3f35.html?page_id=8">Проекты</a>
                 <a href="#footer-contacts" id="contacts-link">Контакты</a>
             </nav>
         </div>
